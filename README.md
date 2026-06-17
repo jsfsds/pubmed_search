@@ -6,7 +6,7 @@
 ## 功能特性
 
 - **PubMed 文献检索**: 通过关键词、作者、期刊等多种方式，使用 PubMed 高级检索语法进行文献检索。
-- **智摘要总结**: 利用 SiliconFlow 用大型语言模型对检索到的多篇文献摘要进行综合概述。
+- **智能摘要总结**: 利用 SiliconFlow 提供的大型语言模型，对检索到的多篇文献摘要进行综合概述。
 
 
 ## 可用工具
@@ -27,11 +27,11 @@
 ```json
 {"success": true, "status": "fetch_completed", "message": "…", "result_file": "…", "article_count": n}
 ```
-+**状态说明**:
-+- `fetch_completed`: 检索成功并已保存结果文件。
-+- `fetch_failed`: 检索失败，可能由于缺少邮箱或检索过程出错。
-+- `no_results`: 检索成功但未找到任何结果。
-+- `save_failed`: 结果文件保存失败，请检查路径和权限。
+**状态说明**:
+- `fetch_completed`: 检索成功并已保存结果文件。
+- `fetch_failed`: 检索失败，可能由于缺少邮箱或检索过程出错。
+- `no_results`: 检索成功但未找到任何结果。
+- `save_failed`: 结果文件保存失败，请检查路径和权限。
 
 
 ### 2. summarize_abstracts
@@ -45,11 +45,11 @@
 ```json
 {"success": true, "status": "summary_completed", "summary": "…"}
 ```
-+**状态说明**:
-+- `summary_completed`: 摘要汇总成功。
-+- `missing_files`: 指定的结果文件未找到。
-+- `extract_failed`: 未能提取到摘要内容。
-+- `summary_failed`: 汇总过程中调用 API 或处理失败。
+**状态说明**:
+- `summary_completed`: 摘要汇总成功。
+- `missing_files`: 指定的结果文件未找到。
+- `extract_failed`: 未能提取到摘要内容。
+- `summary_failed`: 汇总过程中调用 API 或处理失败。
 
 
 ### 3. format_citations
@@ -60,9 +60,9 @@
 ```json
 {"success": true, "status": "citations_formatted", "citations": ["…", "..."]}
 ```
-+**状态说明**:
-+- `citations_formatted`: 引用格式化成功。
-+- `format_failed`: 格式化失败，可能由于指定文件未找到或读取错误。
+**状态说明**:
+- `citations_formatted`: 引用格式化成功。
+- `format_failed`: 格式化失败，可能由于指定文件未找到或读取错误。
 
 
 ## 安装与配置
@@ -73,8 +73,8 @@
 
 ### 2. 克隆项目
 ```bash
-git clone <您的项目仓库地址>
-cd pubmed_search_2
+git clone https://github.com/jsfsds/pubmed_search.git
+cd pubmed_search
 ```
 
 ### 3. 创建并激活虚拟环境 (推荐)
@@ -97,8 +97,10 @@ pip install -r requirements.txt
 ```env
 NCBI_EMAIL="your_email@example.com" # 用于 PubMed Entrez API 的邮箱地址
 NCBI_API_KEY="your_ncbi_api_key" # (可选) 用于 PubMed Entrez API 的 API Key，不填则使用匿名模式，可能会有速率限制
-SILICONFLOW_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # 用于 SiliconFlow 摘要总结服务的 API Key
+SILICONFLOW_API_KEY="your_siliconflow_api_key_here" # 用于 SiliconFlow 摘要总结服务的 API Key
 ```
+
+> 安全说明：请不要将真实的 `.env` 文件或任何 API Key 提交到仓库中。本项目通过环境变量读取密钥，`.env.example` 中仅保留占位符示例。
 
 
 ## 使用示例 （Cursor）
